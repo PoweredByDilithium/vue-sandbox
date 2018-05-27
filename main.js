@@ -1,3 +1,65 @@
+// Single use components, inline templates
+Vue.component('progress-view', {
+    data(){
+        return {
+            completionRate : 50
+        }
+    }
+});
+
+// Named slots using a modal
+Vue.component('modal-card', {
+    template : `<div class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-card">
+
+                        <header class="modal-card-head">
+                            <p class="modal-card-title">
+                                <slot name="header"></slot>
+                            </p>
+                            <button class="delete" aria-label="close"></button>
+                        </header>
+
+                        <section class="modal-card-body">
+                            <slot name="content">Please replace, I'm default content</slot>
+                        </section>
+
+                        <footer class="modal-card-foot">
+                            <slot name="footer">
+                                <button class="button is-success">Save changes</button>
+                                <button class="button">Cancel</button>
+                            </slot>
+                        </footer>
+
+                    </div>
+                </div>`
+});
+
+// Component communication
+
+window.Event = new class {
+    constructor(){
+        this.vue = new Vue({});
+    }
+
+    fire(event, data = null){
+        this.vue.$emit(event, data);
+    }
+
+    listen(event, callback){
+        this.vue.$on(event, callback);
+    }
+};
+
+Vue.component('coupon', {
+    template : `<input placeholder="Enter your coupon code" @blur="onCouponApplied"/>`,
+    methods :{
+        onCouponApplied(){
+            Event.fire('applied');
+        }
+    }
+});
+
 // Tabbing --------------------------------------------------------------------------------
 
 Vue.component('tabs', {
@@ -123,5 +185,12 @@ Vue.component('task', {
 // Vue instance -----------------------------------------------------------------
 
 new Vue({
-    el : '#root'
+    el : '#root',
+    // Uncomment for component communication
+    // data : {
+    //     couponApplied: false
+    // },
+    // created(){
+    //     Event.listen('applied', () => alert('Handling it'));
+    // }
 });

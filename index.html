@@ -17,7 +17,7 @@
 
         <reactivity-example></reactivity-example> -->
 
-        <tabs>
+        <!-- <tabs>
           <tab name="About Us" :selected="true">
             <h1>Here is the content for the about us tab</h1>
           </tab>
@@ -30,7 +30,29 @@
           <tab name="Join the team">
             <h1>Whatever</h1>
           </tab>
-        </tabs>
+        </tabs> -->
+
+         <!-- Component communication -->
+
+         <!-- <coupon @applied="onCouponApplied"></coupon>
+         <h1 v-if="couponApplied">You used a coupon</h1> -->
+
+         <!-- Named slots using a modal -->
+
+          <!-- <modal-card class="is-active">
+            <template slot="header">My Title</template>
+            <template slot="content"></template>
+            <template slot="footer"></template>
+          </modal-card> -->
+
+          <!-- Single use components, inline templates -->
+          <progress-view inline-template> 
+            <div>
+                <h1>Your progress through this course is {{completionRate}}%</h1>
+                <p><button @click="completionRate += 10">Update Completion Rate</button></p>
+            </div>
+          </progress-view>
+
 
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js"></script>
