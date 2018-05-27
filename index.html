@@ -8,16 +8,32 @@
     <style type="text/css">body{padding-top : 40px;}</style>
   </head>
   <body>
-    <div id="root">
+    <div id="root" class="container">
+
         <!-- <task-list></task-list> -->
 
-
-        <singular-message heading="Some Heading" message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque risus mi, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla"></singular-message>
+        <!-- <singular-message heading="Some Heading" message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque risus mi, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla"></singular-message>
         <singular-message heading="Another Heading" message="Another message"></singular-message>
 
-        <reactivity-example></reactivity-example>
+        <reactivity-example></reactivity-example> -->
+
+        <tabs>
+          <tab name="About Us" :selected="true">
+            <h1>Here is the content for the about us tab</h1>
+          </tab>
+          <tab name="About Our Culture">
+            <h1>Here is the content for another tab</h1>
+          </tab>
+          <tab name="FAQ's">
+            <h1>Whatever</h1>
+          </tab>
+          <tab name="Join the team">
+            <h1>Whatever</h1>
+          </tab>
+        </tabs>
 
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js"></script>
+    <script src="main.js"></script>
   </body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js"></script>
-  <script src="main.js"></script>
+</html>
